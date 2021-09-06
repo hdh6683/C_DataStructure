@@ -1,5 +1,7 @@
 #include "element.h"
 
+element extra[MAX_SIZE];
+
 void merge(element list[], element sorted[], int i, int m, int n) {
 	int j = m + 1, k = i, t;
 
@@ -34,7 +36,7 @@ void merge_pass(element list[], element sorted[], int n, int length) {
 
 void merge_sort(element list[], int n) {
 	int length = 1;
-	element extra[MAX_SIZE];
+	// extra는 크기가 커서 전역변수로 선언
 
 	while (length < n) {
 		merge_pass(list, extra, n, length);
@@ -56,7 +58,7 @@ int rmergeSort(element a[], int link[], int left, int right) {
 
 int listMerge(element a[], int link[], int start1, int start2) {
 	int last1, last2, lastResult = 0;
-	for (last1 = start1, last2 = start2; last1 && last2) {
+	for (last1 = start1, last2 = start2; last1 && last2;) {
 		if (a[last1].key <= a[last2].key) {
 			if (a[last1].key <= a[last2].key) {
 				link[lastResult] = last1;

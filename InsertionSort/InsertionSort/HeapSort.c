@@ -16,3 +16,15 @@ void adjust(element list[], int root, int n) {
 	}
 	list[child / 2] = temp;
 }
+
+void heapsort(element list[], int n) {
+	int i, j;
+	element temp;
+
+	for (i = n / 2; i > 0; i--)
+		adjust(list, i, n);
+	for (i = n; i > 0; i--) {
+		SWAP(list[1], list[i], temp);
+		adjust(list, 1, i - 1);
+	}
+}
